@@ -22,10 +22,18 @@ namespace cursedapp
             if(loginRegistrationTextBox.Text.Length!=0 & passwordRegistrationLabel.Text.Length != 0)
             {
                 Database db = new Database("Data Source=userdb.db;");
-                DBUsers user = new DBUsers(loginRegistrationTextBox.Text,passwordRegistrationLabel.Text);
+                DBUsers user = new DBUsers(loginRegistrationTextBox.Text,passwordRegistrationTextBox.Text);
                 if (!db.ValidUser(user))
                 {
-                    db.Registration(user);
+                    if (db.Registration(user))
+                    {
+                        MessageBox.Show("Регистрация успешно пройдена");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка регистрации");
+                    }
                 }
                 else
                 {
@@ -39,5 +47,7 @@ namespace cursedapp
                 MessageBox.Show("Заполните поля для регистрации");
             }
         }
+
+       
     }
 }

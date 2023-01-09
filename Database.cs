@@ -15,7 +15,7 @@ namespace cursedapp
         public Database(string dataSource)
         {
             this.dataSource = dataSource;
-          
+            
 
         }
         public bool InitializeDatabase()
@@ -32,7 +32,7 @@ namespace cursedapp
                    + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                    + "login TEXT, "
                    + "password TEXT, "
-                   + "role TEXT; ";
+                   + "role TEXT); ";
                     cmd.CommandText = sql_command;
                     cmd.ExecuteNonQuery();
                 }
@@ -62,8 +62,12 @@ namespace cursedapp
                     + "where login = '{0}' AND "
                     + "password = '{1}'",
                     user.login, user.password);
-                    var usersCount = (int)cmd.ExecuteScalar();
-                    return usersCount > 0;
+                    var usersCount = cmd.ExecuteScalar();
+                    if(usersCount.ToString() != "0")
+                    {
+                        return true;
+                    }
+                 
                 }
             }
             catch
@@ -85,7 +89,7 @@ namespace cursedapp
                 {
                     SQLiteCommand cmd = conn.CreateCommand();
                    
-                    cmd.CommandText = String.Format("INSERT INTO users ('name','password')"+ "VALUES('{0}', '{1}')",user.login,user.password);
+                    cmd.CommandText = String.Format("INSERT INTO users ('login','password')"+ "VALUES('{0}', '{1}')",user.login,user.password);
                     cmd.ExecuteNonQuery();
                     return true;
 

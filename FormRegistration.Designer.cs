@@ -106,7 +106,7 @@
             this.Controls.Add(this.loginRegistrationLabel);
             this.Controls.Add(this.registrationLabel);
             this.Name = "FormRegistration";
-            this.Text = "FormRegistration";
+            this.Text = "Окно регистрации";
             this.ResumeLayout(false);
             this.PerformLayout();
 
