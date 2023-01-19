@@ -22,7 +22,9 @@ namespace cursedapp
             {
                 new Database("Data Source=userdb.db;").InitializeDatabase();
             }
-            Application.Run(new FormAuth());
+           // Application.Run(new FormAuth());
+
+            Application.Run(new FormMain());
            
 
         }

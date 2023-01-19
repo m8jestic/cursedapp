@@ -1,4 +1,6 @@
-﻿namespace cursedapp
+﻿using System.Windows.Forms;
+
+namespace cursedapp
 {
     partial class FormAuth
     {
@@ -131,7 +133,7 @@
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(176, 20);
             this.loginTextBox.TabIndex = 10;
-            this.loginTextBox.TextChanged += new System.EventHandler(this.loginTextBox_TextChanged);
+           // this.loginTextBox.TextChanged += new System.EventHandler(this.loginTextBox_TextChanged);
             // 
             // passwordTextBox
             // 
@@ -161,7 +163,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно авторизации";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.FormAuth_Load);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

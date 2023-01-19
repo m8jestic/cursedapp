@@ -67,24 +67,33 @@
   <ItemGroup>
     <Compile Include="Database.cs" />
     <Compile Include="DBUsers.cs" />
-    <Compile Include="FormAuth.cs">
+    <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAuth.Designer.cs">
+    <Compile Include="Forms\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAuth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAuth.Designer.cs">
       <DependentUpon>FormAuth.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRegistration.cs">
+    <Compile Include="Forms\FormRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRegistration.Designer.cs">
+    <Compile Include="Forms\FormRegistration.Designer.cs">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormAuth.resx">
+    <EmbeddedResource Include="Forms\FormAuth.resx">
       <DependentUpon>FormAuth.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRegistration.resx">
+    <EmbeddedResource Include="Forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRegistration.resx">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

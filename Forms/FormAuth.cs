@@ -20,17 +20,12 @@ namespace cursedapp
             InitializeComponent();
         }
 
-        private void FormAuth_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        
-
+       
         private void registerButton_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
             DialogResult authDialogResult = new FormRegistration().ShowDialog();
+            this.Show();
             
         }
 
@@ -45,7 +40,8 @@ namespace cursedapp
                 DBUsers user = new DBUsers(login, password);
                 Database db = new Database("Data Source=userdb.db;");
                 if (db.ValidUser(user)) {
-                    MessageBox.Show("E");
+                    Close();
+                    
                 }
                 else
                 {
@@ -59,9 +55,8 @@ namespace cursedapp
            
         }
 
-        private void loginTextBox_TextChanged(object sender, EventArgs e)
-        {
+       
 
-        }
+       
     }
 }

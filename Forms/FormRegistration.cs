@@ -29,6 +29,7 @@ namespace cursedapp
                     {
                         MessageBox.Show("Регистрация успешно пройдена");
                         this.Close();
+                        
                     }
                     else
                     {
@@ -48,6 +49,6 @@ namespace cursedapp
             }
         }
 
-       
+        
     }
 }
