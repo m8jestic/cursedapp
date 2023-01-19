@@ -65,7 +65,7 @@ namespace cursedapp
             var row = e.RowIndex;
             var type = dataGridVertexes.Rows[row].Cells[col].Value.ToString();
             bool isNumber = double.TryParse(type, out double number);
-            if (isNumber & number > 0 | type == "")
+            if (isNumber & number >= 0 | type == "")
             {
                 if (col != row)
                     dataGridVertexes.Rows[col].Cells[row].Value = dataGridVertexes.Rows[row].Cells[col].Value;
@@ -77,6 +77,46 @@ namespace cursedapp
                 MessageBox.Show("Допускается вводить только положительные численные значения");
                 dataGridVertexes.Rows[row].Cells[col].Value = "";
             }
+        }
+        private bool isFilled()
+        {
+            var countNumbers = 0;
+            for(int i = 0; i<dataGridVertexes.ColumnCount; i++)
+            {
+                for(int j = 0; j < dataGridVertexes.ColumnCount; j++)
+                {
+                    var type = dataGridVertexes.Rows[i].Cells[j].Value.GetType();
+                    if (dataGridVertexes.Rows[i].Cells[j].Value == "" | type.Name.ToString() == "DBNull")
+                    {
+                        return false;
+                    }
+                    if (i != j)
+                    {
+                        if (Int32.Parse(dataGridVertexes.Rows[i].Cells[j].Value.ToString()) > 0)
+                        {
+                            countNumbers += 2;
+                        }
+                    }
+                }
+            }
+            if (countNumbers > 0)
+            {
+                return true;
+            }
+            else { 
+                return false; 
+            }
+        }
+        private void buttonSolving_Click(object sender, EventArgs e)
+        {
+            if (isFilled())
+            {
+                DialogResult dialogResult = new FormSolving(dataGridVertexes, dt).ShowDialog();
+            }
+            else 
+            {
+                MessageBox.Show("Не все поля заполнены");
+            }   
         }
     }
 }

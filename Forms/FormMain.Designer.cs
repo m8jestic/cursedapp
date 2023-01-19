@@ -31,6 +31,7 @@
             this.dataGridVertexes = new System.Windows.Forms.DataGridView();
             this.addVertexButton = new System.Windows.Forms.Button();
             this.deleteCityButton = new System.Windows.Forms.Button();
+            this.buttonSolving = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridVertexes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,11 +66,22 @@
             this.deleteCityButton.UseVisualStyleBackColor = true;
             this.deleteCityButton.Click += new System.EventHandler(this.deleteCityButton_Click);
             // 
+            // buttonSolving
+            // 
+            this.buttonSolving.Location = new System.Drawing.Point(12, 53);
+            this.buttonSolving.Name = "buttonSolving";
+            this.buttonSolving.Size = new System.Drawing.Size(113, 23);
+            this.buttonSolving.TabIndex = 3;
+            this.buttonSolving.Text = "Решение";
+            this.buttonSolving.UseVisualStyleBackColor = true;
+            this.buttonSolving.Click += new System.EventHandler(this.buttonSolving_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonSolving);
             this.Controls.Add(this.deleteCityButton);
             this.Controls.Add(this.addVertexButton);
             this.Controls.Add(this.dataGridVertexes);
@@ -86,5 +98,6 @@
         private System.Windows.Forms.DataGridView dataGridVertexes;
         private System.Windows.Forms.Button addVertexButton;
         private System.Windows.Forms.Button deleteCityButton;
+        private System.Windows.Forms.Button buttonSolving;
     }
 }
