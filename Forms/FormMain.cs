@@ -22,11 +22,11 @@ namespace cursedapp
         private void AddVertexes(DataTable dt)
         {
             count++; 
-            dt.Columns.Add($"{count}", typeof(string));
+            dt.Columns.Add($"{count}");
             dt.Rows.Add();
-            dataGridVertexes.Rows[count-1].Cells[count-1].Value = 0;
-            dataGridVertexes.Rows[count - 1].Cells[count - 1].ReadOnly = true;
             
+            dataGridVertexes.Rows[count-1].Cells[count-1].Value = 0;
+
         }
         private void RemoveVertexes(DataTable dt) 
         {

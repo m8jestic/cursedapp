@@ -13,12 +13,12 @@ namespace cursedapp
     public partial class FormSolving : Form
     {
         DataGridView dataGridVertex = new DataGridView();
-        DataTable dt = new DataTable();
+  
         public FormSolving(DataGridView dataGridView,DataTable dataTable)
         {
             InitializeComponent();
             dataGridVertex = dataGridView;
-            dt = dataTable; 
+            
         }
         private static int MinKey(int[] key, bool[] set, int verticesCount)
         {
@@ -36,11 +36,15 @@ namespace cursedapp
             return minIndex;
         }
 
-        private static void Print(int[] parent, int[,] graph, int verticesCount)
+        private void Print(int[] parent, int[,] graph, int verticesCount)
         {
-            Console.WriteLine("Edge     Weight");
+            string str = " ";
+
+            str +="Ребро    Вес\n";
             for (int i = 1; i < verticesCount; ++i)
-                Console.WriteLine("{0} - {1}    {2}", parent[i] + 1, i + 1, graph[i, parent[i]]);
+                str += $"{parent[i] + 1} - {i + 1}       {graph[i, parent[i]]}\n";
+            MessageBox.Show(str);
+            
         }
         private void NearestNeighbourAlgorithm(int[,] graph, int verticesCount)
         {
@@ -74,7 +78,7 @@ namespace cursedapp
 
             Print(parent, graph, verticesCount);
         }
-        private void GetMatrix(DataGridView dg)
+        private int[,] GetMatrix(DataGridView dg)
         {
             int n = dg.ColumnCount;
             int[,] matrix = new int[n,n];
@@ -85,10 +89,14 @@ namespace cursedapp
                     matrix[i, j] = Int32.Parse(dg.Rows[i].Cells[j].Value.ToString());
                 }
             }
+            return matrix;
         }
+       
         private void FormSolving_Load(object sender, EventArgs e)
         {
-            GetMatrix(dataGridVertex);
+            var adjecencyMatrix = GetMatrix(dataGridVertex);
+            NearestNeighbourAlgorithm(adjecencyMatrix, dataGridVertex.ColumnCount);
+            
         }
     }
 }

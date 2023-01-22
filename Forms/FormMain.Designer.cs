@@ -40,15 +40,15 @@
             this.dataGridVertexes.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.dataGridVertexes.BackgroundColor = System.Drawing.Color.SlateGray;
             this.dataGridVertexes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridVertexes.Location = new System.Drawing.Point(12, 82);
+            this.dataGridVertexes.Location = new System.Drawing.Point(12, 292);
             this.dataGridVertexes.Name = "dataGridVertexes";
-            this.dataGridVertexes.Size = new System.Drawing.Size(776, 356);
+            this.dataGridVertexes.Size = new System.Drawing.Size(776, 146);
             this.dataGridVertexes.TabIndex = 0;
             this.dataGridVertexes.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridVertexes_CellEndEdit);
             // 
             // addVertexButton
             // 
-            this.addVertexButton.Location = new System.Drawing.Point(542, 53);
+            this.addVertexButton.Location = new System.Drawing.Point(553, 263);
             this.addVertexButton.Name = "addVertexButton";
             this.addVertexButton.Size = new System.Drawing.Size(113, 23);
             this.addVertexButton.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             // deleteCityButton
             // 
-            this.deleteCityButton.Location = new System.Drawing.Point(672, 53);
+            this.deleteCityButton.Location = new System.Drawing.Point(672, 263);
             this.deleteCityButton.Name = "deleteCityButton";
             this.deleteCityButton.Size = new System.Drawing.Size(116, 23);
             this.deleteCityButton.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // buttonSolving
             // 
-            this.buttonSolving.Location = new System.Drawing.Point(12, 53);
+            this.buttonSolving.Location = new System.Drawing.Point(12, 263);
             this.buttonSolving.Name = "buttonSolving";
             this.buttonSolving.Size = new System.Drawing.Size(113, 23);
             this.buttonSolving.TabIndex = 3;
