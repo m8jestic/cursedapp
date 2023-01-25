@@ -91,6 +91,7 @@
     <Compile Include="Forms\FormRegistration.Designer.cs">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Graph.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FormAuth.resx">
@@ -113,6 +114,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -127,6 +129,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ResourceImages\1200px-Jurin-Kūrin_%28Rokurin_Ichiro%29.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ResourceImages\istockphoto-969119274-612x612.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ResourceImages\png-transparent-black-vertical-line-rectangle-horizontal-line-angle-black-internet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ResourceImages\174.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ResourceImages\Transparent_X.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ResourceImages\png-transparent-computer-icons-rubbish-bins-waste-paper-baskets-recycling-bin-trash-can-white-rectangle-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ResourceImages\1483063.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
