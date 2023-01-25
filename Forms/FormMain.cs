@@ -21,7 +21,7 @@ namespace cursedapp
         int s2;
         List<Vertex> Vertexes;
         List<Edge> Edges;
-        double[,] Matrix;
+        int[,] Matrix;
         public FormMain()
         {
             InitializeComponent();
@@ -124,9 +124,10 @@ namespace cursedapp
         private void buttonSolving_Click(object sender, EventArgs e)
         {
            
-            Matrix = new double[Vertexes.Count, Vertexes.Count];
+            Matrix = new int[Vertexes.Count, Vertexes.Count];
             Matrix = G.createMatrix(Vertexes.Count, Edges, Matrix, Vertexes);
-
+            var newWay = new List<Edge>();
+            G.nearestNeighbourAlgorithm(Matrix,Vertexes.Count);
         }
 
         private void MouseButton_Click(object sender, EventArgs e)

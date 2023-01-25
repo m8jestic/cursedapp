@@ -26,6 +26,7 @@ namespace cursedapp
         {
             this.From = From;
             this.To = To;
+
         }
     }
     class Graph
@@ -104,7 +105,7 @@ namespace cursedapp
                 drawVertex(V[i].x, V[i].y, (i + 1).ToString());
             }
         }
-        public double[,] createMatrix(int n, List<Edge> E, double[,] matrix, List<Vertex> V)
+        public int[,] createMatrix(int n, List<Edge> E, int[,] matrix, List<Vertex> V)
         {
             for (int i = 0; i < n; i++)
             {
@@ -118,7 +119,7 @@ namespace cursedapp
                 matrix[E[i].From, E[i].To] = 1;
                 matrix[E[i].To, E[i].From] = 1;
             }
-            for (int i = 0; i < n; i++)
+            /*for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
@@ -127,103 +128,151 @@ namespace cursedapp
                         matrix[i, j] = Math.Sqrt(Math.Pow((V[i].x - V[j].x), 2) + Math.Pow((V[i].y - V[j].y), 2));
                     }
                 }
-            }
+            }*/
             return matrix;
         }
-       /* public void algorithmByPrim(int numberV, List<Edge> E, List<Edge> MST)
-
+        private static int MinKey(int[] key, bool[] set, int verticesCount)
         {
+            int min = int.MaxValue, minIndex = 0;
 
-            //неиспользованные ребра
-
-            List<Edge> notUsedE = new List<Edge>(E);
-
-            //использованные вершины
-
-            List<int> usedV = new List<int>();
-
-            //неиспользованные вершины
-
-            List<int> notUsedV = new List<int>();
-
-            for (int i = 0; i < numberV; i++)
-
-                notUsedV.Add(i);
-
-            //выбираем случайную начальную вершину
-
-            Random rand = new Random();
-
-            usedV.Add(rand.Next(0, numberV));
-
-            notUsedV.RemoveAt(usedV[0]);
-
-            while (notUsedV.Count > 0)
-
+            for (int v = 0; v < verticesCount; ++v)
             {
-
-                int minE = -1; //номер наименьшего ребра
-
-                //поиск наименьшего ребра
-
-                for (int i = 0; i < notUsedE.Count; i++)
-
+                if (set[v] == false && key[v] < min)
                 {
-
-                    if ((usedV.IndexOf(notUsedE[i].From) != -1) && (notUsedV.IndexOf(notUsedE[i].To) != -1) ||
-
-                    (usedV.IndexOf(notUsedE[i].To) != -1) && (notUsedV.IndexOf(notUsedE[i].From) != -1))
-
-                    {
-
-                        if (minE != -1)
-
-                        {
-
-                            if (notUsedE[i].weight < notUsedE[minE].weight)
-
-                                minE = i;
-
-                        }
-
-                        else
-
-                            minE = i;
-
-                    }
-
+                    min = key[v];
+                    minIndex = v;
                 }
-
-                //заносим новую вершину в список использованных и удаляем ее из списка неиспользованных
-
-                if (usedV.IndexOf(notUsedE[minE].To) != -1)
-
-                {
-
-                    usedV.Add(notUsedE[minE].To);
-
-                    notUsedV.Remove(notUsedE[minE].To);
-
-                }
-
-                else
-
-                {
-
-                    usedV.Add(notUsedE[minE].From);
-
-                    notUsedV.Remove(notUsedE[minE].From);
-
-                }
-
-                //заносим новое ребро в дерево и удаляем его из списка неиспользованных
-
-                MST.Add(notUsedE[minE]);
-
-                notUsedE.RemoveAt(minE);
-
             }
-        }*/
 
+            return minIndex;
+        }
+        public void nearestNeighbourAlgorithm(int[,] graph, int verticesCount)
+        {
+            int[] parent = new int[verticesCount];
+            int[] key = new int[verticesCount];
+            bool[] mstSet = new bool[verticesCount];
+
+            for (int i = 0; i < verticesCount; ++i)
+            {
+                key[i] = int.MaxValue;
+                mstSet[i] = false;
+            }
+
+            key[0] = 0;
+            parent[0] = -1;
+
+            for (int count = 0; count < verticesCount - 1; ++count)
+            {
+                int u = MinKey(key, mstSet, verticesCount);
+                mstSet[u] = true;
+
+                for (int v = 0; v < verticesCount; ++v)
+                {
+                    if (Convert.ToBoolean(graph[u, v]) && mstSet[v] == false && graph[u, v] < key[v])
+                    {
+                        parent[v] = u;
+                        key[v] = graph[u, v];
+                    }
+                }
+            }
+
+            // Print(parent, graph, verticesCount);
+        }
+        /* public void nearestNeighbourAlg(int numberV, List<Edge> E, List<Edge> newWay)
+
+         {
+
+             //неиспользованные ребра
+
+             List<Edge> notUsedE = new List<Edge>(E);
+
+             //использованные вершины
+
+             List<int> usedV = new List<int>();
+
+             //неиспользованные вершины
+
+             List<int> notUsedV = new List<int>();
+
+             for (int i = 0; i < numberV; i++)
+
+                 notUsedV.Add(i);
+
+             //выбираем случайную начальную вершину
+
+             Random rand = new Random();
+
+             usedV.Add(rand.Next(0, numberV));
+
+             notUsedV.RemoveAt(usedV[0]);
+
+             while (notUsedV.Count > 0)
+
+             {
+
+                 int minE = -1; //номер наименьшего ребра
+
+                 //поиск наименьшего ребра
+
+                 for (int i = 0; i < notUsedE.Count; i++)
+
+                 {
+
+                     if ((usedV.IndexOf(notUsedE[i].From) != -1) && (notUsedV.IndexOf(notUsedE[i].To) != -1) ||
+
+                     (usedV.IndexOf(notUsedE[i].To) != -1) && (notUsedV.IndexOf(notUsedE[i].From) != -1))
+
+                     {
+
+                         if (minE != -1)
+
+                         {
+
+                             if (notUsedE[i].Weight < notUsedE[minE].Weight)
+
+                                 minE = i;
+
+                         }
+
+                         else
+
+                             minE = i;
+
+                     }
+
+                 }
+
+                 //заносим новую вершину в список использованных и удаляем ее из списка неиспользованных
+
+                 if (usedV.IndexOf(notUsedE[minE].To) != -1)
+
+                 {
+
+                     usedV.Add(notUsedE[minE].To);
+
+                     notUsedV.Remove(notUsedE[minE].To);
+
+                 }
+
+                 else
+
+                 {
+
+                     usedV.Add(notUsedE[minE].From);
+
+                     notUsedV.Remove(notUsedE[minE].From);
+
+                 }
+
+                 //заносим новое ребро в дерево и удаляем его из списка неиспользованных
+
+                 newWay.Add(notUsedE[minE]);
+
+                 notUsedE.RemoveAt(minE);
+
+             }
+         
+
+     }*/
     }
 }
