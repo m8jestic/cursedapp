@@ -15,8 +15,8 @@ namespace cursedapp
     public partial class FormMain : Form
     {
         Graph G;
-        int count = 0;
-        DataTable dt = new DataTable();
+        
+   
         int s1; 
         int s2;
         List<Vertex> Vertexes;
@@ -25,109 +25,35 @@ namespace cursedapp
         public FormMain()
         {
             InitializeComponent();
-            dataGridVertexes.AllowUserToAddRows = false;
-            dataGridVertexes.DataSource = dt;
+          
             Vertexes = new List<Vertex>();
             Edges = new List<Edge>();
             G = new Graph(cloth.Width, cloth.Height);
             cloth.Image = G.GetBitmap();
         }
        
-        private void AddVertexes(DataTable dt)
-        {
-            count++; 
-            dt.Columns.Add($"{count}");
-            dt.Rows.Add();
-            
-            dataGridVertexes.Rows[count-1].Cells[count-1].Value = 0;
-            
-        }
         
-        private void RemoveVertexes(DataTable dt) 
-        {
-            if (count > 0)
-            {
-                dt.Columns.Remove($"{count}");
-                dt.Rows.RemoveAt(count - 1);
-                count--;
-            }
-            else
-            {
-                MessageBox.Show("Матрица пуста");
-            }
-        }
+        
+        
         private void FormMain_Load(object sender, EventArgs e)
         {
              
         }
 
-        private void addVertexButton_Click(object sender, EventArgs e)
-        {
-            AddVertexes(dt);
-        }
-
-
-        private void deleteCityButton_Click(object sender, EventArgs e)
-        {
-            RemoveVertexes(dt);
-        }
+      
         
-        private void dataGridVertexes_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            var col = e.ColumnIndex;
-            var row = e.RowIndex;
-            var type = dataGridVertexes.Rows[row].Cells[col].Value.ToString();
-            bool isNumber = double.TryParse(type, out double number);
-            if (isNumber & number >= 0 | type == "")
-            {
-                if (col != row)
-                    dataGridVertexes.Rows[col].Cells[row].Value = dataGridVertexes.Rows[row].Cells[col].Value;
-                else
-                    dataGridVertexes.Rows[col].Cells[row].Value = 0;
-            }
-            else
-            { 
-                MessageBox.Show("Допускается вводить только положительные численные значения");
-                dataGridVertexes.Rows[row].Cells[col].Value = "";
-            }
-        }
-        private bool isFilled()
-        {
-            var countNumbers = 0;
-            for(int i = 0; i<dataGridVertexes.ColumnCount; i++)
-            {
-                for(int j = 0; j < dataGridVertexes.ColumnCount; j++)
-                {
-                    var type = dataGridVertexes.Rows[i].Cells[j].Value.GetType();
-                    if (dataGridVertexes.Rows[i].Cells[j].Value == "" | type.Name.ToString() == "DBNull")
-                    {
-                        return false;
-                    }
-                    if (i != j)
-                    {
-                        if (Int32.Parse(dataGridVertexes.Rows[i].Cells[j].Value.ToString()) > 0)
-                        {
-                            countNumbers += 2;
-                        }
-                    }
-                }
-            }
-            if (countNumbers > 0)
-            {
-                return true;
-            }
-            else { 
-                return false; 
-            }
-        }
+        
+        
         
         private void buttonSolving_Click(object sender, EventArgs e)
         {
            
             Matrix = new int[Vertexes.Count, Vertexes.Count];
             Matrix = G.createMatrix(Vertexes.Count, Edges, Matrix, Vertexes);
+           
             var newWay = new List<Edge>();
-            G.nearestNeighbourAlgorithm(Matrix,Vertexes.Count);
+            G.nearestNeighbourAlgorithm(Matrix,Vertexes.Count,Edges,Vertexes);
+           cloth.Image = G.GetBitmap();
         }
 
         private void MouseButton_Click(object sender, EventArgs e)
@@ -149,6 +75,7 @@ namespace cursedapp
             edgeButton.Enabled = true;
             deleteButton.Enabled = true;
             G.clearSheet();
+            
             G.drawALLGraph(Vertexes, Edges);
             cloth.Image = G.GetBitmap();
         }
@@ -195,12 +122,12 @@ namespace cursedapp
                 cloth.Image = G.GetBitmap();
             }
         }
+       
+       
         private void cloth_Click(object sender, MouseEventArgs e)
         {
             if (vertexButton.Enabled == false)
             {
-                if (Vertexes.Count < 9)
-                {
                     bool flag = true;
                     for (int i = 0; i < Vertexes.Count; i++)
                     {
@@ -217,7 +144,7 @@ namespace cursedapp
                         cloth.Image = G.GetBitmap();
                        
                     }
-                }
+                
             }
             if (edgeButton.Enabled == false)
             {
@@ -308,6 +235,9 @@ namespace cursedapp
             }
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ёрхов Матвей 741-1\nАлгоритм ближайшего соседа — один из простейших эвристических алгоритмов решения задачи коммивояжёра. Относится к категории «жадных» алгоритмов.", "О программе");
+        }
     }
 }

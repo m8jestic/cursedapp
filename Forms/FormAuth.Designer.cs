@@ -38,6 +38,9 @@ namespace cursedapp
             this.suggestLabel = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.checkBoxPassword = new System.Windows.Forms.CheckBox();
+            this.labelCheckLogin = new System.Windows.Forms.Label();
+            this.labelCheckPassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // okButton
@@ -48,7 +51,7 @@ namespace cursedapp
             this.okButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.okButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.okButton.Location = new System.Drawing.Point(362, 221);
+            this.okButton.Location = new System.Drawing.Point(375, 251);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 0;
@@ -63,7 +66,7 @@ namespace cursedapp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.welcomeLabel.Location = new System.Drawing.Point(261, 94);
+            this.welcomeLabel.Location = new System.Drawing.Point(274, 89);
             this.welcomeLabel.Name = "welcomeLabel";
             this.welcomeLabel.Size = new System.Drawing.Size(277, 19);
             this.welcomeLabel.TabIndex = 1;
@@ -76,7 +79,7 @@ namespace cursedapp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.loginLabel.AutoSize = true;
             this.loginLabel.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginLabel.Location = new System.Drawing.Point(376, 121);
+            this.loginLabel.Location = new System.Drawing.Point(389, 118);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(46, 17);
             this.loginLabel.TabIndex = 4;
@@ -89,7 +92,7 @@ namespace cursedapp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(372, 175);
+            this.passwordLabel.Location = new System.Drawing.Point(385, 188);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(54, 17);
             this.passwordLabel.TabIndex = 5;
@@ -105,7 +108,7 @@ namespace cursedapp
             this.registerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.registerButton.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.registerButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.registerButton.Location = new System.Drawing.Point(311, 300);
+            this.registerButton.Location = new System.Drawing.Point(324, 311);
             this.registerButton.Name = "registerButton";
             this.registerButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.registerButton.Size = new System.Drawing.Size(176, 29);
@@ -121,7 +124,7 @@ namespace cursedapp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.suggestLabel.AutoSize = true;
             this.suggestLabel.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.suggestLabel.Location = new System.Drawing.Point(263, 269);
+            this.suggestLabel.Location = new System.Drawing.Point(276, 289);
             this.suggestLabel.Name = "suggestLabel";
             this.suggestLabel.Size = new System.Drawing.Size(272, 19);
             this.suggestLabel.TabIndex = 6;
@@ -129,26 +132,64 @@ namespace cursedapp
             // 
             // loginTextBox
             // 
-            this.loginTextBox.Location = new System.Drawing.Point(311, 141);
+            this.loginTextBox.Location = new System.Drawing.Point(324, 138);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(176, 20);
             this.loginTextBox.TabIndex = 10;
-           // this.loginTextBox.TextChanged += new System.EventHandler(this.loginTextBox_TextChanged);
+            this.loginTextBox.TextChanged += new System.EventHandler(this.loginTextBox_TextChanged);
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(311, 195);
+            this.passwordTextBox.Location = new System.Drawing.Point(324, 208);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(176, 20);
             this.passwordTextBox.TabIndex = 11;
             this.passwordTextBox.UseSystemPasswordChar = true;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
+            // 
+            // checkBoxPassword
+            // 
+            this.checkBoxPassword.AutoSize = true;
+            this.checkBoxPassword.Location = new System.Drawing.Point(506, 211);
+            this.checkBoxPassword.Name = "checkBoxPassword";
+            this.checkBoxPassword.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxPassword.TabIndex = 12;
+            this.checkBoxPassword.UseVisualStyleBackColor = true;
+            this.checkBoxPassword.CheckedChanged += new System.EventHandler(this.checkBoxPassword_CheckedChanged);
+            // 
+            // labelCheckLogin
+            // 
+            this.labelCheckLogin.AutoSize = true;
+            this.labelCheckLogin.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.labelCheckLogin.ForeColor = System.Drawing.Color.Red;
+            this.labelCheckLogin.Location = new System.Drawing.Point(271, 161);
+            this.labelCheckLogin.Name = "labelCheckLogin";
+            this.labelCheckLogin.Size = new System.Drawing.Size(282, 17);
+            this.labelCheckLogin.TabIndex = 13;
+            this.labelCheckLogin.Text = "Логин должен содержать более 4 символов";
+            this.labelCheckLogin.Visible = false;
+            // 
+            // labelCheckPassword
+            // 
+            this.labelCheckPassword.AutoSize = true;
+            this.labelCheckPassword.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.labelCheckPassword.ForeColor = System.Drawing.Color.Red;
+            this.labelCheckPassword.Location = new System.Drawing.Point(267, 231);
+            this.labelCheckPassword.Name = "labelCheckPassword";
+            this.labelCheckPassword.Size = new System.Drawing.Size(290, 17);
+            this.labelCheckPassword.TabIndex = 14;
+            this.labelCheckPassword.Text = "Пароль должен содержать более 5 символов";
+            this.labelCheckPassword.Visible = false;
             // 
             // FormAuth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(786, 448);
+            this.Controls.Add(this.labelCheckPassword);
+            this.Controls.Add(this.labelCheckLogin);
+            this.Controls.Add(this.checkBoxPassword);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.loginTextBox);
             this.Controls.Add(this.registerButton);
@@ -163,7 +204,7 @@ namespace cursedapp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Окно авторизации";
             this.TopMost = true;
-            
+            this.Load += new System.EventHandler(this.FormAuth_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,6 +220,9 @@ namespace cursedapp
         private System.Windows.Forms.Label suggestLabel;
         private System.Windows.Forms.TextBox loginTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
+        private CheckBox checkBoxPassword;
+        private Label labelCheckLogin;
+        private Label labelCheckPassword;
     }
 }
 

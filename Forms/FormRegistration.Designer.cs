@@ -34,6 +34,10 @@
             this.loginRegistrationTextBox = new System.Windows.Forms.TextBox();
             this.passwordRegistrationTextBox = new System.Windows.Forms.TextBox();
             this.okRegistrationButton = new System.Windows.Forms.Button();
+            this.passwordRegistrationConfirmTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxPassword = new System.Windows.Forms.CheckBox();
+            this.checkBoxPasswordConfirm = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // registrationLabel
@@ -77,7 +81,6 @@
             // 
             this.passwordRegistrationTextBox.Location = new System.Drawing.Point(319, 233);
             this.passwordRegistrationTextBox.Name = "passwordRegistrationTextBox";
-            this.passwordRegistrationTextBox.PasswordChar = '*';
             this.passwordRegistrationTextBox.Size = new System.Drawing.Size(187, 20);
             this.passwordRegistrationTextBox.TabIndex = 4;
             this.passwordRegistrationTextBox.UseSystemPasswordChar = true;
@@ -86,7 +89,7 @@
             // 
             this.okRegistrationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.okRegistrationButton.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.okRegistrationButton.Location = new System.Drawing.Point(375, 267);
+            this.okRegistrationButton.Location = new System.Drawing.Point(376, 311);
             this.okRegistrationButton.Name = "okRegistrationButton";
             this.okRegistrationButton.Size = new System.Drawing.Size(75, 23);
             this.okRegistrationButton.TabIndex = 5;
@@ -94,11 +97,54 @@
             this.okRegistrationButton.UseVisualStyleBackColor = true;
             this.okRegistrationButton.Click += new System.EventHandler(this.okRegistrationButton_Click);
             // 
+            // passwordRegistrationConfirmTextBox
+            // 
+            this.passwordRegistrationConfirmTextBox.Location = new System.Drawing.Point(319, 285);
+            this.passwordRegistrationConfirmTextBox.Name = "passwordRegistrationConfirmTextBox";
+            this.passwordRegistrationConfirmTextBox.Size = new System.Drawing.Size(187, 20);
+            this.passwordRegistrationConfirmTextBox.TabIndex = 6;
+            this.passwordRegistrationConfirmTextBox.UseSystemPasswordChar = true;
+            
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.label1.Location = new System.Drawing.Point(345, 265);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 17);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Подтвердите пароль";
+            // 
+            // checkBoxPassword
+            // 
+            this.checkBoxPassword.AutoSize = true;
+            this.checkBoxPassword.Location = new System.Drawing.Point(512, 239);
+            this.checkBoxPassword.Name = "checkBoxPassword";
+            this.checkBoxPassword.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxPassword.TabIndex = 8;
+            this.checkBoxPassword.UseVisualStyleBackColor = true;
+            this.checkBoxPassword.CheckedChanged += new System.EventHandler(this.checkBoxPassword_CheckedChanged);
+            // 
+            // checkBoxPasswordConfirm
+            // 
+            this.checkBoxPasswordConfirm.AutoSize = true;
+            this.checkBoxPasswordConfirm.Location = new System.Drawing.Point(512, 287);
+            this.checkBoxPasswordConfirm.Name = "checkBoxPasswordConfirm";
+            this.checkBoxPasswordConfirm.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxPasswordConfirm.TabIndex = 9;
+            this.checkBoxPasswordConfirm.UseVisualStyleBackColor = true;
+            this.checkBoxPasswordConfirm.CheckedChanged += new System.EventHandler(this.checkBoxPasswordConfirm_CheckedChanged);
+            // 
             // FormRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBoxPasswordConfirm);
+            this.Controls.Add(this.checkBoxPassword);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.passwordRegistrationConfirmTextBox);
             this.Controls.Add(this.okRegistrationButton);
             this.Controls.Add(this.passwordRegistrationTextBox);
             this.Controls.Add(this.loginRegistrationTextBox);
@@ -107,7 +153,6 @@
             this.Controls.Add(this.registrationLabel);
             this.Name = "FormRegistration";
             this.Text = "Окно регистрации";
-  
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,5 +166,9 @@
         private System.Windows.Forms.TextBox loginRegistrationTextBox;
         private System.Windows.Forms.TextBox passwordRegistrationTextBox;
         private System.Windows.Forms.Button okRegistrationButton;
+        private System.Windows.Forms.TextBox passwordRegistrationConfirmTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBoxPassword;
+        private System.Windows.Forms.CheckBox checkBoxPasswordConfirm;
     }
 }

@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace cursedapp
 {
@@ -20,13 +22,13 @@ namespace cursedapp
     }
     class Edge
     {
-        public int From, To;
+        public int From, To,Weight;
 
-        public Edge(int From, int To)
+        public Edge(int From, int To, int Weight =1)
         {
             this.From = From;
             this.To = To;
-
+            this.Weight = Weight;
         }
     }
     class Graph
@@ -72,6 +74,7 @@ namespace cursedapp
             gr.DrawEllipse(blackPen, (x - R), (y - R), 2 * R, 2 * R);
             point = new PointF(x - 9, y - 9);
             gr.DrawString(number, fo, br, point);
+            
         }
 
         public void drawSelectedVertex(int x, int y)
@@ -119,16 +122,16 @@ namespace cursedapp
                 matrix[E[i].From, E[i].To] = 1;
                 matrix[E[i].To, E[i].From] = 1;
             }
-            /*for (int i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
                     if (matrix[i, j] == 1)
                     {
-                        matrix[i, j] = Math.Sqrt(Math.Pow((V[i].x - V[j].x), 2) + Math.Pow((V[i].y - V[j].y), 2));
+                        matrix[i, j] = (int)Math.Sqrt(Math.Pow((V[i].x - V[j].x), 2) + Math.Pow((V[i].y - V[j].y), 2));
                     }
                 }
-            }*/
+            }
             return matrix;
         }
         private static int MinKey(int[] key, bool[] set, int verticesCount)
@@ -146,7 +149,7 @@ namespace cursedapp
 
             return minIndex;
         }
-        public void nearestNeighbourAlgorithm(int[,] graph, int verticesCount)
+        public void nearestNeighbourAlgorithm(int[,] graph, int verticesCount,List<Edge> edges, List<Vertex> vertexes)
         {
             int[] parent = new int[verticesCount];
             int[] key = new int[verticesCount];
@@ -176,103 +179,25 @@ namespace cursedapp
                 }
             }
 
-            // Print(parent, graph, verticesCount);
+             Print(parent, graph, verticesCount,edges,vertexes);
         }
-        /* public void nearestNeighbourAlg(int numberV, List<Edge> E, List<Edge> newWay)
+        private void Print(int[] parent, int[,] graph, int verticesCount,List<Edge> edges,List<Vertex> vertexes)
+        {
+            string str = " ";
+            int sum = 0;
+            str += "Ребро    Вес\n";
+            for (int i = 1; i < verticesCount; ++i)
+            {
+                str += $"{parent[i] + 1} - {i + 1}       {graph[i, parent[i]]}\n";
+                sum += graph[i, parent[i]];
+                gr.DrawLine(blackPen, vertexes[i].x, vertexes[i].y, vertexes[parent[i]].x, vertexes[parent[i]].y);
+                
+            }
+            str += $"Итоговая сумма: {sum}";
+                
+            MessageBox.Show(str);
 
-         {
-
-             //неиспользованные ребра
-
-             List<Edge> notUsedE = new List<Edge>(E);
-
-             //использованные вершины
-
-             List<int> usedV = new List<int>();
-
-             //неиспользованные вершины
-
-             List<int> notUsedV = new List<int>();
-
-             for (int i = 0; i < numberV; i++)
-
-                 notUsedV.Add(i);
-
-             //выбираем случайную начальную вершину
-
-             Random rand = new Random();
-
-             usedV.Add(rand.Next(0, numberV));
-
-             notUsedV.RemoveAt(usedV[0]);
-
-             while (notUsedV.Count > 0)
-
-             {
-
-                 int minE = -1; //номер наименьшего ребра
-
-                 //поиск наименьшего ребра
-
-                 for (int i = 0; i < notUsedE.Count; i++)
-
-                 {
-
-                     if ((usedV.IndexOf(notUsedE[i].From) != -1) && (notUsedV.IndexOf(notUsedE[i].To) != -1) ||
-
-                     (usedV.IndexOf(notUsedE[i].To) != -1) && (notUsedV.IndexOf(notUsedE[i].From) != -1))
-
-                     {
-
-                         if (minE != -1)
-
-                         {
-
-                             if (notUsedE[i].Weight < notUsedE[minE].Weight)
-
-                                 minE = i;
-
-                         }
-
-                         else
-
-                             minE = i;
-
-                     }
-
-                 }
-
-                 //заносим новую вершину в список использованных и удаляем ее из списка неиспользованных
-
-                 if (usedV.IndexOf(notUsedE[minE].To) != -1)
-
-                 {
-
-                     usedV.Add(notUsedE[minE].To);
-
-                     notUsedV.Remove(notUsedE[minE].To);
-
-                 }
-
-                 else
-
-                 {
-
-                     usedV.Add(notUsedE[minE].From);
-
-                     notUsedV.Remove(notUsedE[minE].From);
-
-                 }
-
-                 //заносим новое ребро в дерево и удаляем его из списка неиспользованных
-
-                 newWay.Add(notUsedE[minE]);
-
-                 notUsedE.RemoveAt(minE);
-
-             }
-         
-
-     }*/
+        }
+       
     }
 }
