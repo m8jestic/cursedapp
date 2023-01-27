@@ -47,13 +47,17 @@ namespace cursedapp
         
         private void buttonSolving_Click(object sender, EventArgs e)
         {
-           
-            Matrix = new int[Vertexes.Count, Vertexes.Count];
-            Matrix = G.createMatrix(Vertexes.Count, Edges, Matrix, Vertexes);
-           
-            var newWay = new List<Edge>();
-            G.nearestNeighbourAlgorithm(Matrix,Vertexes.Count,Edges,Vertexes);
-           cloth.Image = G.GetBitmap();
+            if (Vertexes.Count >1 | Edges.Count > 0)
+            {
+                Matrix = new int[Vertexes.Count, Vertexes.Count];
+                Matrix = G.createMatrix(Vertexes.Count, Edges, Matrix, Vertexes);
+
+                var newWay = new List<Edge>();
+                G.nearestNeighbourAlgorithm(Matrix, Vertexes.Count, Edges, Vertexes);
+                cloth.Image = G.GetBitmap();
+            }
+            else
+                MessageBox.Show("Заполните граф");
         }
 
         private void MouseButton_Click(object sender, EventArgs e)

@@ -34,11 +34,13 @@ namespace cursedapp
         {
             
             string login = loginTextBox.Text;
-            string password = passwordTextBox.Text;
-            if(loginTextBox.Text.Length !=0 & passwordTextBox.Text.Length != 0 & labelCheckLogin.Visible== false & labelCheckPassword.Visible == false)
+            
+            
+            if (loginTextBox.Text.Length !=0 & passwordTextBox.Text.Length != 0 & labelCheckLogin.Visible== false & labelCheckPassword.Visible == false)
             {
-                DBUsers user = new DBUsers(login, password);
                 Database db = new Database("Data Source=userdb.db;");
+                string Hpassword = db.Hash(passwordTextBox.Text);
+                DBUsers user = new DBUsers(login, Hpassword);
                 if (db.ValidUser(user)) {
                     this.Hide();
                     var formMain = new FormMain();
@@ -76,7 +78,7 @@ namespace cursedapp
                 labelCheckLogin.Text = less;
                 labelCheckLogin.Visible = true;
             }
-            else if(loginTextBox.Text.Length>12)
+            else if(loginTextBox.Text.Length>=12)
             {
                 labelCheckLogin.Text = more;
                 labelCheckLogin.Visible = true;
@@ -96,7 +98,7 @@ namespace cursedapp
                 labelCheckPassword.Text = less;
                 labelCheckPassword.Visible = true;
             }
-            else if (passwordTextBox.Text.Length > 14)
+            else if (passwordTextBox.Text.Length >= 14)
             {
                 labelCheckPassword.Text = more;
                 labelCheckPassword.Visible = true;
