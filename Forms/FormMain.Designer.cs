@@ -131,7 +131,7 @@
             this.buttonSaveSolving.Name = "buttonSaveSolving";
             this.buttonSaveSolving.Size = new System.Drawing.Size(124, 23);
             this.buttonSaveSolving.TabIndex = 11;
-            this.buttonSaveSolving.Text = "Сохранить решение";
+            this.buttonSaveSolving.Text = "Сохранить изображение";
             this.buttonSaveSolving.UseVisualStyleBackColor = true;
             this.buttonSaveSolving.Click += new System.EventHandler(this.buttonSaveSolving_Click);
             // 
