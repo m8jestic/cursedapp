@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -178,8 +179,23 @@ namespace cursedapp
                     }
                 }
             }
-
-             Print(parent, graph, verticesCount,edges,vertexes);
+            int countZeros = 0;
+            for(int i = 1; i < verticesCount; ++i)
+            {
+                if (graph[i, parent[i]] == 0)
+                {
+                    countZeros++;
+                }
+            }
+            if(countZeros == 0)
+            {
+                Print(parent, graph, verticesCount, edges, vertexes);
+            }
+            else
+            {
+                MessageBox.Show("Заполните граф");
+            }
+             
         }
         private void Print(int[] parent, int[,] graph, int verticesCount,List<Edge> edges,List<Vertex> vertexes)
         {
@@ -188,13 +204,10 @@ namespace cursedapp
             str += "Ребро    Вес\n";
             for (int i = 1; i < verticesCount; ++i)
             {
-                if (graph[i, parent[i]] > 0)
-                {
+               
                     str += $"{parent[i] + 1} - {i + 1}       {graph[i, parent[i]]}\n";
                     sum += graph[i, parent[i]];
                     gr.DrawLine(blackPen, vertexes[i].x, vertexes[i].y, vertexes[parent[i]].x, vertexes[parent[i]].y);
-                }
-               
                 
             }
             str += $"Итоговая сумма: {sum}";

@@ -41,6 +41,7 @@
             // 
             // buttonSolving
             // 
+            this.buttonSolving.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonSolving.Location = new System.Drawing.Point(12, 574);
             this.buttonSolving.Name = "buttonSolving";
             this.buttonSolving.Size = new System.Drawing.Size(113, 23);
@@ -51,6 +52,7 @@
             // 
             // clearButton
             // 
+            this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.clearButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.clearButton.BackgroundImage = global::cursedapp.Properties.Resources._1483063;
             this.clearButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -63,6 +65,7 @@
             // 
             // deleteButton
             // 
+            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.deleteButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.deleteButton.BackgroundImage = global::cursedapp.Properties.Resources.Transparent_X;
             this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -75,6 +78,7 @@
             // 
             // edgeButton
             // 
+            this.edgeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.edgeButton.BackgroundImage = global::cursedapp.Properties.Resources.png_transparent_black_vertical_line_rectangle_horizontal_line_angle_black_internet;
             this.edgeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.edgeButton.Location = new System.Drawing.Point(487, 562);
@@ -86,6 +90,7 @@
             // 
             // vertexButton
             // 
+            this.vertexButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.vertexButton.BackgroundImage = global::cursedapp.Properties.Resources._174;
             this.vertexButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.vertexButton.Location = new System.Drawing.Point(446, 562);
@@ -97,6 +102,7 @@
             // 
             // mouseButton
             // 
+            this.mouseButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.mouseButton.BackgroundImage = global::cursedapp.Properties.Resources.istockphoto_969119274_612x612;
             this.mouseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.mouseButton.Location = new System.Drawing.Point(405, 562);
@@ -108,6 +114,9 @@
             // 
             // cloth
             // 
+            this.cloth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cloth.BackColor = System.Drawing.Color.White;
             this.cloth.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.cloth.Location = new System.Drawing.Point(12, 22);
@@ -119,6 +128,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(883, 574);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 23);
@@ -132,7 +142,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(1008, 609);
+            this.ClientSize = new System.Drawing.Size(1007, 602);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.deleteButton);
