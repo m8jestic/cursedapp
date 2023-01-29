@@ -125,6 +125,7 @@
             this.cloth.TabIndex = 4;
             this.cloth.TabStop = false;
             this.cloth.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cloth_Click);
+            
             // 
             // button1
             // 
@@ -151,6 +152,7 @@
             this.Controls.Add(this.mouseButton);
             this.Controls.Add(this.cloth);
             this.Controls.Add(this.buttonSolving);
+            this.MaximumSize = new System.Drawing.Size(1023, 641);
             this.Name = "FormMain";
             this.Text = "Окно решения";
             this.Load += new System.EventHandler(this.FormMain_Load);

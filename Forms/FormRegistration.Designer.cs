@@ -195,6 +195,7 @@
             this.Controls.Add(this.passwordRegistrationLabel);
             this.Controls.Add(this.loginRegistrationLabel);
             this.Controls.Add(this.registrationLabel);
+            this.MaximumSize = new System.Drawing.Size(816, 489);
             this.Name = "FormRegistration";
             this.Text = "Окно регистрации";
             this.ResumeLayout(false);

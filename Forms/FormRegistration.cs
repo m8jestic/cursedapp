@@ -67,6 +67,11 @@ namespace cursedapp
         {
             string less = "Логин должен содержать более 4 символов";
             string more = "Логин должен содержать менее 12 символов";
+         
+            if(loginRegistrationTextBox.Text.Contains(' '))
+            {
+               loginRegistrationTextBox.Text = loginRegistrationTextBox.Text.Replace(" ","");
+            }
             if (loginRegistrationTextBox.Text.Length < 4)
             {
                 labelCheckRegistrLogin.Text = less;
@@ -87,6 +92,10 @@ namespace cursedapp
         {
             string less = "Пароль должен содержать более 5 символов";
             string more = "Пароль должен содержать менее 14 символов";
+            if(passwordRegistrationTextBox.Text.Contains(' '))
+            {
+                passwordRegistrationTextBox.Text = passwordRegistrationTextBox.Text.Replace(" ", "");
+            }
             if (passwordRegistrationTextBox.Text.Length < 5)
             {
                 labelCheckRegPassword.Text = less;

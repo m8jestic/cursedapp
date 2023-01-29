@@ -45,6 +45,7 @@ namespace cursedapp
             // 
             // okButton
             // 
+            this.okButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.okButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.okButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -58,6 +59,7 @@ namespace cursedapp
             // 
             // welcomeLabel
             // 
+            this.welcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.welcomeLabel.Location = new System.Drawing.Point(274, 89);
@@ -68,6 +70,7 @@ namespace cursedapp
             // 
             // loginLabel
             // 
+            this.loginLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.loginLabel.AutoSize = true;
             this.loginLabel.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.loginLabel.Location = new System.Drawing.Point(389, 118);
@@ -78,6 +81,7 @@ namespace cursedapp
             // 
             // passwordLabel
             // 
+            this.passwordLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordLabel.Location = new System.Drawing.Point(385, 188);
@@ -88,6 +92,7 @@ namespace cursedapp
             // 
             // registerButton
             // 
+            this.registerButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.registerButton.BackColor = System.Drawing.SystemColors.ControlLight;
             this.registerButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.registerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -104,6 +109,7 @@ namespace cursedapp
             // 
             // suggestLabel
             // 
+            this.suggestLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.suggestLabel.AutoSize = true;
             this.suggestLabel.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.suggestLabel.Location = new System.Drawing.Point(276, 289);
@@ -114,6 +120,7 @@ namespace cursedapp
             // 
             // loginTextBox
             // 
+            this.loginTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.loginTextBox.Location = new System.Drawing.Point(324, 138);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(176, 20);
@@ -122,6 +129,7 @@ namespace cursedapp
             // 
             // passwordTextBox
             // 
+            this.passwordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.passwordTextBox.Location = new System.Drawing.Point(324, 208);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(176, 20);
@@ -131,6 +139,7 @@ namespace cursedapp
             // 
             // checkBoxPassword
             // 
+            this.checkBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.checkBoxPassword.AutoSize = true;
             this.checkBoxPassword.Location = new System.Drawing.Point(506, 211);
             this.checkBoxPassword.Name = "checkBoxPassword";
@@ -141,6 +150,7 @@ namespace cursedapp
             // 
             // labelCheckLogin
             // 
+            this.labelCheckLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelCheckLogin.AutoSize = true;
             this.labelCheckLogin.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
             this.labelCheckLogin.ForeColor = System.Drawing.Color.Red;
@@ -153,6 +163,7 @@ namespace cursedapp
             // 
             // labelCheckPassword
             // 
+            this.labelCheckPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelCheckPassword.AutoSize = true;
             this.labelCheckPassword.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
             this.labelCheckPassword.ForeColor = System.Drawing.Color.Red;
@@ -181,6 +192,7 @@ namespace cursedapp
             this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.okButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MaximumSize = new System.Drawing.Size(802, 487);
             this.Name = "FormAuth";
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
