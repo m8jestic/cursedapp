@@ -42,7 +42,7 @@ namespace cursedapp
         Font fo;
         Brush br;
         PointF point;
-        public int R = 15; //радиус окружности вершины
+        public int R = 15; 
 
         public Graph(int width, int height)
         {
@@ -150,13 +150,13 @@ namespace cursedapp
 
             return minIndex;
         }
-        public void nearestNeighbourAlgorithm(int[,] graph, int verticesCount,List<Edge> edges, List<Vertex> vertexes)
+        public void nearestNeighbourAlgorithm(int[,] graph, List<Vertex> vertexes)
         {
-            int[] parent = new int[verticesCount];
-            int[] key = new int[verticesCount];
-            bool[] mstSet = new bool[verticesCount];
+            int[] parent = new int[vertexes.Count];
+            int[] key = new int[vertexes.Count];
+            bool[] mstSet = new bool[vertexes.Count];
 
-            for (int i = 0; i < verticesCount; ++i)
+            for (int i = 0; i < vertexes.Count; ++i)
             {
                 key[i] = int.MaxValue;
                 mstSet[i] = false;
@@ -165,12 +165,12 @@ namespace cursedapp
             key[0] = 0;
             parent[0] = -1;
 
-            for (int count = 0; count < verticesCount - 1; ++count)
+            for (int count = 0; count < vertexes.Count - 1; ++count)
             {
-                int u = MinKey(key, mstSet, verticesCount);
+                int u = MinKey(key, mstSet, vertexes.Count);
                 mstSet[u] = true;
 
-                for (int v = 0; v < verticesCount; ++v)
+                for (int v = 0; v < vertexes.Count; ++v)
                 {
                     if (Convert.ToBoolean(graph[u, v]) && mstSet[v] == false && graph[u, v] < key[v])
                     {
@@ -180,7 +180,7 @@ namespace cursedapp
                 }
             }
             int countZeros = 0;
-            for(int i = 1; i < verticesCount; ++i)
+            for(int i = 1; i < vertexes.Count; ++i)
             {
                 if (graph[i, parent[i]] == 0)
                 {
@@ -189,7 +189,7 @@ namespace cursedapp
             }
             if(countZeros == 0)
             {
-                Print(parent, graph, verticesCount, edges, vertexes);
+                Print(parent, graph,  vertexes);
             }
             else
             {
@@ -197,12 +197,12 @@ namespace cursedapp
             }
              
         }
-        private void Print(int[] parent, int[,] graph, int verticesCount,List<Edge> edges,List<Vertex> vertexes)
+        private void Print(int[] parent, int[,] graph, List<Vertex> vertexes)
         {
             string str = " ";
             int sum = 0;
             str += "Ребро    Вес\n";
-            for (int i = 1; i < verticesCount; ++i)
+            for (int i = 1; i < vertexes.Count; ++i)
             {
                
                     str += $"{parent[i] + 1} - {i + 1}       {graph[i, parent[i]]}\n";

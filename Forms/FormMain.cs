@@ -53,7 +53,7 @@ namespace cursedapp
                 Matrix = G.createMatrix(Vertexes.Count, Edges, Matrix, Vertexes);
 
                 var newWay = new List<Edge>();
-                G.nearestNeighbourAlgorithm(Matrix, Vertexes.Count, Edges, Vertexes);
+                G.nearestNeighbourAlgorithm(Matrix, Vertexes);
                 cloth.Image = G.GetBitmap();
             }
             else
