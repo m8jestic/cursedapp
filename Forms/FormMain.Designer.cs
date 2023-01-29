@@ -33,9 +33,9 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.edgeButton = new System.Windows.Forms.Button();
             this.vertexButton = new System.Windows.Forms.Button();
-            this.mouseButton = new System.Windows.Forms.Button();
             this.cloth = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonSaveSolving = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.cloth)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@
             this.clearButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.clearButton.BackgroundImage = global::cursedapp.Properties.Resources._1483063;
             this.clearButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.clearButton.Location = new System.Drawing.Point(569, 562);
+            this.clearButton.Location = new System.Drawing.Point(548, 562);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(35, 35);
             this.clearButton.TabIndex = 9;
@@ -69,7 +69,7 @@
             this.deleteButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.deleteButton.BackgroundImage = global::cursedapp.Properties.Resources.Transparent_X;
             this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.deleteButton.Location = new System.Drawing.Point(528, 562);
+            this.deleteButton.Location = new System.Drawing.Point(507, 562);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(35, 35);
             this.deleteButton.TabIndex = 8;
@@ -81,7 +81,7 @@
             this.edgeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.edgeButton.BackgroundImage = global::cursedapp.Properties.Resources.png_transparent_black_vertical_line_rectangle_horizontal_line_angle_black_internet;
             this.edgeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.edgeButton.Location = new System.Drawing.Point(487, 562);
+            this.edgeButton.Location = new System.Drawing.Point(466, 562);
             this.edgeButton.Name = "edgeButton";
             this.edgeButton.Size = new System.Drawing.Size(35, 35);
             this.edgeButton.TabIndex = 7;
@@ -93,24 +93,12 @@
             this.vertexButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.vertexButton.BackgroundImage = global::cursedapp.Properties.Resources._174;
             this.vertexButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.vertexButton.Location = new System.Drawing.Point(446, 562);
+            this.vertexButton.Location = new System.Drawing.Point(425, 562);
             this.vertexButton.Name = "vertexButton";
             this.vertexButton.Size = new System.Drawing.Size(35, 35);
             this.vertexButton.TabIndex = 6;
             this.vertexButton.UseVisualStyleBackColor = true;
             this.vertexButton.Click += new System.EventHandler(this.vertexButton_Click);
-            // 
-            // mouseButton
-            // 
-            this.mouseButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.mouseButton.BackgroundImage = global::cursedapp.Properties.Resources.istockphoto_969119274_612x612;
-            this.mouseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.mouseButton.Location = new System.Drawing.Point(405, 562);
-            this.mouseButton.Name = "mouseButton";
-            this.mouseButton.Size = new System.Drawing.Size(35, 35);
-            this.mouseButton.TabIndex = 5;
-            this.mouseButton.UseVisualStyleBackColor = true;
-            this.mouseButton.Click += new System.EventHandler(this.MouseButton_Click);
             // 
             // cloth
             // 
@@ -125,7 +113,6 @@
             this.cloth.TabIndex = 4;
             this.cloth.TabStop = false;
             this.cloth.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cloth_Click);
-            
             // 
             // button1
             // 
@@ -138,18 +125,28 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // buttonSaveSolving
+            // 
+            this.buttonSaveSolving.Location = new System.Drawing.Point(753, 574);
+            this.buttonSaveSolving.Name = "buttonSaveSolving";
+            this.buttonSaveSolving.Size = new System.Drawing.Size(124, 23);
+            this.buttonSaveSolving.TabIndex = 11;
+            this.buttonSaveSolving.Text = "Сохранить решение";
+            this.buttonSaveSolving.UseVisualStyleBackColor = true;
+            this.buttonSaveSolving.Click += new System.EventHandler(this.buttonSaveSolving_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(1007, 602);
+            this.Controls.Add(this.buttonSaveSolving);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.edgeButton);
             this.Controls.Add(this.vertexButton);
-            this.Controls.Add(this.mouseButton);
             this.Controls.Add(this.cloth);
             this.Controls.Add(this.buttonSolving);
             this.MaximumSize = new System.Drawing.Size(1023, 641);
@@ -164,11 +161,11 @@
         #endregion
         private System.Windows.Forms.Button buttonSolving;
         private System.Windows.Forms.PictureBox cloth;
-        private System.Windows.Forms.Button mouseButton;
         private System.Windows.Forms.Button vertexButton;
         private System.Windows.Forms.Button edgeButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSaveSolving;
     }
 }

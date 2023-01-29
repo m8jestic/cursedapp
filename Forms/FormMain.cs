@@ -60,22 +60,12 @@ namespace cursedapp
                 MessageBox.Show("Заполните граф");
         }
 
-        private void MouseButton_Click(object sender, EventArgs e)
-        {
-            mouseButton.Enabled = false;
-            vertexButton.Enabled = true;
-            edgeButton.Enabled = true;
-            deleteButton.Enabled = true;
-            G.clearSheet();
-            G.drawALLGraph(Vertexes, Edges);
-            cloth.Image = G.GetBitmap();
-            s1 = -1;
-        }
+       
 
         private void vertexButton_Click(object sender, EventArgs e)
         {
             vertexButton.Enabled = false;
-            mouseButton.Enabled = true;
+            
             edgeButton.Enabled = true;
             deleteButton.Enabled = true;
             G.clearSheet();
@@ -87,7 +77,7 @@ namespace cursedapp
         private void edgeButton_Click(object sender, EventArgs e)
         {
             edgeButton.Enabled = false;
-            mouseButton.Enabled = true;
+           
             vertexButton.Enabled = true;
             deleteButton.Enabled = true;
             G.clearSheet();
@@ -100,7 +90,7 @@ namespace cursedapp
         private void deleteButton_Click(object sender, EventArgs e)
         {
             deleteButton.Enabled = false;
-            mouseButton.Enabled = true;
+          
             vertexButton.Enabled = true;
             edgeButton.Enabled = true;
             G.clearSheet();
@@ -110,7 +100,7 @@ namespace cursedapp
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-            mouseButton.Enabled = true;
+        
             vertexButton.Enabled = true;
             edgeButton.Enabled = true;
             deleteButton.Enabled = true;
@@ -242,6 +232,23 @@ namespace cursedapp
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Ёрхов Матвей 741-1\nАлгоритм ближайшего соседа — один из простейших эвристических алгоритмов решения задачи коммивояжёра. Относится к категории «жадных» алгоритмов.", "О программе");
+        }
+
+        private void buttonSaveSolving_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Image Files(*.JPG)|*.JPG|Image Files(*.PNG)|*.PNG";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName.Length > 0)
+            {
+                try
+                {
+                    cloth.Image.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
+                catch
+                {
+                    MessageBox.Show("Невозможно сохранить изображение", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
