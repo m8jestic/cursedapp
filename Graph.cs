@@ -188,9 +188,13 @@ namespace cursedapp
             str += "Ребро    Вес\n";
             for (int i = 1; i < verticesCount; ++i)
             {
-                str += $"{parent[i] + 1} - {i + 1}       {graph[i, parent[i]]}\n";
-                sum += graph[i, parent[i]];
-                gr.DrawLine(blackPen, vertexes[i].x, vertexes[i].y, vertexes[parent[i]].x, vertexes[parent[i]].y);
+                if (graph[i, parent[i]] > 0)
+                {
+                    str += $"{parent[i] + 1} - {i + 1}       {graph[i, parent[i]]}\n";
+                    sum += graph[i, parent[i]];
+                    gr.DrawLine(blackPen, vertexes[i].x, vertexes[i].y, vertexes[parent[i]].x, vertexes[parent[i]].y);
+                }
+               
                 
             }
             str += $"Итоговая сумма: {sum}";

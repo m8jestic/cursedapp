@@ -43,11 +43,11 @@ namespace cursedapp
       
         
         
-        
+       
         
         private void buttonSolving_Click(object sender, EventArgs e)
         {
-            if (Vertexes.Count >1 | Edges.Count > 0)
+            if (Vertexes.Count >1 & Edges.Count > 0)
             {
                 Matrix = new int[Vertexes.Count, Vertexes.Count];
                 Matrix = G.createMatrix(Vertexes.Count, Edges, Matrix, Vertexes);
