@@ -123,7 +123,7 @@ namespace cursedapp
                 matrix[E[i].From, E[i].To] = 1;
                 matrix[E[i].To, E[i].From] = 1;
             }
-            for (int i = 0; i < n; i++)
+            /*for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
@@ -132,7 +132,7 @@ namespace cursedapp
                         matrix[i, j] = (int)Math.Sqrt(Math.Pow((V[i].x - V[j].x), 2) + Math.Pow((V[i].y - V[j].y), 2));
                     }
                 }
-            }
+            }*/
             return matrix;
         }
         private static int MinKey(int[] key, bool[] set, int verticesCount)

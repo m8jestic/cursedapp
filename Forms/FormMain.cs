@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace cursedapp
 {
@@ -16,7 +17,7 @@ namespace cursedapp
     {
         Graph G;
         
-   
+        DataTable dt = new DataTable(); 
         int s1; 
         int s2;
         List<Vertex> Vertexes;
@@ -28,16 +29,133 @@ namespace cursedapp
           
             Vertexes = new List<Vertex>();
             Edges = new List<Edge>();
+            dataGridVertexes.AllowUserToAddRows = false;
+            dataGridVertexes.DataSource = dt;
             G = new Graph(cloth.Width, cloth.Height);
             cloth.Image = G.GetBitmap();
+
         }
-       
-        
-        
-        
+
+
+        private void updateMatrix()
+        {
+            dataGridVertexes.DataSource = dt;
+            if (vertexButton.Enabled == false)
+            {
+                Matrix = new int[Vertexes.Count, Vertexes.Count];
+                Matrix = G.createMatrix(Vertexes.Count, Edges, Matrix, Vertexes);
+                dt.Columns.Add($"{Vertexes.Count}");
+                dt.Rows.Add();
+                dataGridVertexes.Rows[Vertexes.Count - 1].Cells[Vertexes.Count - 1].Value = 0;
+                for (int i = 0; i < Vertexes.Count; i++)
+                {
+                    for (int j = 0; j < Vertexes.Count; j++)
+                    {
+                        if (Matrix[i, j] > 0)
+                        {
+                            dataGridVertexes.Rows[i].Cells[j].Value = Matrix[i, j];
+                            dataGridVertexes.Rows[i].Cells[j].ReadOnly = false;
+                        }
+                        else
+                        {
+                            dataGridVertexes.Rows[i].Cells[j].Value = Matrix[i, j];
+                            dataGridVertexes.Rows[i].Cells[j].ReadOnly = true;
+                        }
+                    }
+                }
+            }
+            else if(edgeButton.Enabled == false)
+            {
+                Matrix = new int[Vertexes.Count, Vertexes.Count];
+                Matrix = G.createMatrix(Vertexes.Count, Edges, Matrix, Vertexes);
+                dataGridVertexes.Rows[Vertexes.Count - 1].Cells[Vertexes.Count - 1].Value = 0;
+                for (int i = 0; i < Vertexes.Count; i++)
+                {
+                    for (int j = 0; j < Vertexes.Count; j++)
+                    {
+                        if (Matrix[i, j] > 0)
+                        {
+                            dataGridVertexes.Rows[i].Cells[j].Value = Matrix[i, j];
+                            dataGridVertexes.Rows[i].Cells[j].ReadOnly = false;
+                        }
+                        else
+                        {
+                            dataGridVertexes.Rows[i].Cells[j].Value = Matrix[i, j];
+                            dataGridVertexes.Rows[i].Cells[j].ReadOnly = true;
+                        }
+                    }
+                }
+            }
+            else if(deleteButton.Enabled == false)
+            {
+                Matrix = new int[Vertexes.Count, Vertexes.Count];
+                Matrix = G.createMatrix(Vertexes.Count, Edges, Matrix, Vertexes);
+                dt = new DataTable();
+                dataGridVertexes.DataSource = dt;
+                if (Vertexes.Count > 0)
+                {
+                    for (int i = 0; i < Vertexes.Count; i++)
+                    {
+                    dt.Columns.Add($"{i}");
+                    dt.Rows.Add();
+                    }
+                
+                    
+                    dataGridVertexes.Rows[Vertexes.Count - 1].Cells[Vertexes.Count - 1].Value = 0;
+                    for (int i = 0; i < Vertexes.Count; i++)
+                    {
+                        for (int j = 0; j < Vertexes.Count; j++)
+                        {
+                            if (Matrix[i, j] > 0)
+                            {
+                                dataGridVertexes.Rows[i].Cells[j].Value = Matrix[i, j];
+                                dataGridVertexes.Rows[i].Cells[j].ReadOnly = false;
+                            }
+                            else
+                            {
+                                dataGridVertexes.Rows[i].Cells[j].Value = Matrix[i, j];
+                                dataGridVertexes.Rows[i].Cells[j].ReadOnly = true;
+                            }
+                        }
+                    }
+                }
+                
+
+            }
+            else 
+            {
+                dt = new DataTable();
+                dataGridVertexes.DataSource = dt;
+            }
+            
+        }
+        private void dataGridVertexes_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            var col = e.ColumnIndex;
+            var row = e.RowIndex;
+            var type = dataGridVertexes.Rows[row].Cells[col].Value.ToString();
+            bool isNumber = double.TryParse(type, out double number);
+            if (isNumber & number > 0 | type == "")
+            {
+                if (col != row)
+                {
+                    dataGridVertexes.Rows[col].Cells[row].Value = dataGridVertexes.Rows[row].Cells[col].Value;
+                    Matrix[col, row] = int.Parse(dataGridVertexes.Rows[col].Cells[row].Value.ToString());
+                    Matrix[row,col] = Matrix[col, row];
+                }
+                    
+                else
+                    dataGridVertexes.Rows[col].Cells[row].Value = 1;
+            }
+            else
+            {
+                MessageBox.Show("Допускается вводить только положительные численные значения");
+                dataGridVertexes.Rows[row].Cells[col].Value = 1;
+            }
+        }
         private void FormMain_Load(object sender, EventArgs e)
         {
-             
+           
         }
 
       
@@ -49,8 +167,7 @@ namespace cursedapp
         {
             if (Vertexes.Count >1 & Edges.Count > 0)
             {
-                Matrix = new int[Vertexes.Count, Vertexes.Count];
-                Matrix = G.createMatrix(Vertexes.Count, Edges, Matrix, Vertexes);
+               
 
                 var newWay = new List<Edge>();
                 G.nearestNeighbourAlgorithm(Matrix, Vertexes);
@@ -72,6 +189,7 @@ namespace cursedapp
             
             G.drawALLGraph(Vertexes, Edges);
             cloth.Image = G.GetBitmap();
+            
         }
 
         private void edgeButton_Click(object sender, EventArgs e)
@@ -114,6 +232,7 @@ namespace cursedapp
                 Edges.Clear();
                 G.clearSheet();
                 cloth.Image = G.GetBitmap();
+                updateMatrix();
             }
         }
        
@@ -136,8 +255,9 @@ namespace cursedapp
                         G.drawVertex(e.X, e.Y, Vertexes.Count.ToString());
                         
                         cloth.Image = G.GetBitmap();
-                       
-                    }
+                        updateMatrix();
+
+                     }
                 
             }
             if (edgeButton.Enabled == false)
@@ -153,6 +273,7 @@ namespace cursedapp
                                 G.drawSelectedVertex(Vertexes[i].x, Vertexes[i].y);
                                 s1 = i;
                                 cloth.Image = G.GetBitmap();
+                                
                                 break;
                             }
                             if (s2 == -1)
@@ -167,9 +288,11 @@ namespace cursedapp
                                 
                                 break;
                             }
+                            
                         }
                     }
                 }
+                updateMatrix();
             }
             if (deleteButton.Enabled == false)
             {
@@ -193,9 +316,11 @@ namespace cursedapp
                         }
                         Vertexes.RemoveAt(i);
                         flag = true;
+                        
                         break;
                     }
                 }
+                
                 if (!flag)
                 {
                     for (int i = 0; i < Edges.Count; i++)
@@ -213,12 +338,14 @@ namespace cursedapp
                                 {
                                     Edges.RemoveAt(i);
                                     flag = true;
+                                    
                                     break;
                                 }
                             }
                         }
                     }
                 }
+                
                 if (flag)
                 {
                     G.clearSheet();
@@ -226,6 +353,7 @@ namespace cursedapp
                     cloth.Image = G.GetBitmap();
                     
                 }
+                updateMatrix();
             }
         }
 
