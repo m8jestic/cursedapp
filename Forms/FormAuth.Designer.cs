@@ -196,7 +196,7 @@ namespace cursedapp
             this.Name = "FormAuth";
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Окно авторизации";
+            this.Text = "Авторизация";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormAuth_Load);
             this.ResumeLayout(false);

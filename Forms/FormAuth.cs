@@ -33,7 +33,7 @@ namespace cursedapp
         private void okButton_Click(object sender, EventArgs e)
         {
             
-            string login = loginTextBox.Text;
+            string login = loginTextBox.Text.Trim();
             
             
             if (loginTextBox.Text.Length !=0 & passwordTextBox.Text.Length != 0 & labelCheckLogin.Visible== false & labelCheckPassword.Visible == false)

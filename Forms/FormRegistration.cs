@@ -114,8 +114,11 @@ namespace cursedapp
 
         private void passwordRegistrationConfirmTextBox_TextChanged(object sender, EventArgs e)
         {
-
-            if(passwordRegistrationConfirmTextBox.Text != passwordRegistrationTextBox.Text) 
+            if (passwordRegistrationConfirmTextBox.Text.Contains(' '))
+            {
+                passwordRegistrationConfirmTextBox.Text = passwordRegistrationConfirmTextBox.Text.Replace(" ", "");
+            }
+            if (passwordRegistrationConfirmTextBox.Text != passwordRegistrationTextBox.Text) 
             
                 labelCheckRegPasswordCheck.Visible= true;
             

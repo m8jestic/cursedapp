@@ -162,8 +162,9 @@
             this.Controls.Add(this.vertexButton);
             this.Controls.Add(this.cloth);
             this.Controls.Add(this.buttonSolving);
+            this.MaximumSize = new System.Drawing.Size(1163, 730);
             this.Name = "FormMain";
-            this.Text = "Окно решения";
+            this.Text = "Основное окно";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cloth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridVertexes)).EndInit();
