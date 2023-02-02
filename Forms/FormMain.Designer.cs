@@ -37,6 +37,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.buttonSaveSolving = new System.Windows.Forms.Button();
             this.dataGridVertexes = new System.Windows.Forms.DataGridView();
+            this.saveTextSolving = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.cloth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridVertexes)).BeginInit();
             this.SuspendLayout();
@@ -129,9 +130,9 @@
             // 
             // buttonSaveSolving
             // 
-            this.buttonSaveSolving.Location = new System.Drawing.Point(892, 439);
+            this.buttonSaveSolving.Location = new System.Drawing.Point(859, 439);
             this.buttonSaveSolving.Name = "buttonSaveSolving";
-            this.buttonSaveSolving.Size = new System.Drawing.Size(124, 23);
+            this.buttonSaveSolving.Size = new System.Drawing.Size(157, 23);
             this.buttonSaveSolving.TabIndex = 11;
             this.buttonSaveSolving.Text = "Сохранить изображение";
             this.buttonSaveSolving.UseVisualStyleBackColor = true;
@@ -147,12 +148,23 @@
             this.dataGridVertexes.TabIndex = 12;
             this.dataGridVertexes.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridVertexes_CellEndEdit);
             // 
+            // saveTextSolving
+            // 
+            this.saveTextSolving.Location = new System.Drawing.Point(677, 439);
+            this.saveTextSolving.Name = "saveTextSolving";
+            this.saveTextSolving.Size = new System.Drawing.Size(176, 23);
+            this.saveTextSolving.TabIndex = 13;
+            this.saveTextSolving.Text = "Сохранить текстовое решение";
+            this.saveTextSolving.UseVisualStyleBackColor = true;
+            this.saveTextSolving.Click += new System.EventHandler(this.saveTextSolving_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(1147, 691);
+            this.Controls.Add(this.saveTextSolving);
             this.Controls.Add(this.dataGridVertexes);
             this.Controls.Add(this.buttonSaveSolving);
             this.Controls.Add(this.button1);
@@ -187,5 +199,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonSaveSolving;
         private System.Windows.Forms.DataGridView dataGridVertexes;
+        private System.Windows.Forms.Button saveTextSolving;
     }
 }

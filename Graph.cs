@@ -139,7 +139,7 @@ namespace cursedapp
             return matrix;
         }
         
-        public  float nearestNeighborAlgorithm(int startPoint, int[,] a, List<Vertex> V)
+        public string nearestNeighborAlgorithm(int startPoint, int[,] a, List<Vertex> V)
         {
             float pathLength = 0;
             int actualPoint = startPoint;
@@ -182,10 +182,10 @@ namespace cursedapp
             }
             pathLength += a[actualPoint, startPoint];
             visited.Add(0);
-            Print(visited,pathLength,V);
-            return pathLength;
+            var str =  Print(visited,pathLength,V);
+            return str;
         }
-        private void Print(List<int> visited,float pathLength, List<Vertex> vertexes)
+        private string Print(List<int> visited,float pathLength, List<Vertex> vertexes)
         {
             string str = " ";
             int sum = 0;
@@ -196,7 +196,10 @@ namespace cursedapp
                 gr.DrawLine(blackPen, vertexes[visited[i]].x, vertexes[visited[i]].y, vertexes[visited[i+1]].x, vertexes[visited[i+1]].y);
             }
             str += $"Итоговый путь {pathLength}";
+            
             MessageBox.Show($"{str}");
+            return str;
+            
         }
         
     }

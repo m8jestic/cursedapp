@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -20,9 +21,11 @@ namespace cursedapp
         DataTable dt = new DataTable(); 
         int s1; 
         int s2;
+        
         List<Vertex> Vertexes;
         List<Edge> Edges;
         int[,] Matrix;
+        string res;
         public FormMain()
         {
             InitializeComponent();
@@ -167,11 +170,8 @@ namespace cursedapp
         {
             if (Vertexes.Count >1 & Edges.Count > 0)
             {
-               
-
                 var newWay = new List<Edge>();
-                var res = G.nearestNeighborAlgorithm(0,Matrix, Vertexes);
-               
+                res = G.nearestNeighborAlgorithm(0,Matrix, Vertexes);
                 cloth.Image = G.GetBitmap();
             }
             else
@@ -254,12 +254,9 @@ namespace cursedapp
                     {
                         Vertexes.Add(new Vertex(e.X, e.Y));
                         G.drawVertex(e.X, e.Y, Vertexes.Count.ToString());
-                        
                         cloth.Image = G.GetBitmap();
                         updateMatrix();
-
                      }
-                
             }
             if (edgeButton.Enabled == false)
             {
@@ -274,7 +271,6 @@ namespace cursedapp
                                 G.drawSelectedVertex(Vertexes[i].x, Vertexes[i].y);
                                 s1 = i;
                                 cloth.Image = G.GetBitmap();
-                                
                                 break;
                             }
                             if (s2 == -1)
@@ -286,10 +282,8 @@ namespace cursedapp
                                 s1 = -1;
                                 s2 = -1;
                                 cloth.Image = G.GetBitmap();
-                                
                                 break;
                             }
-                            
                         }
                     }
                 }
@@ -376,6 +370,28 @@ namespace cursedapp
                 catch
                 {
                     MessageBox.Show("Невозможно сохранить изображение", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void saveTextSolving_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = ".txt";
+            saveFileDialog.Filter = "Text Files | *.txt";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName.Length > 0)
+            {
+                using (StreamWriter SW = new StreamWriter(saveFileDialog.FileName, false))
+                {
+                    SW.WriteLine("Результаты работы программы.");
+                    SW.WriteLine("Граф состоит из {0} точек.", Vertexes.Count);
+                    if (Vertexes.Count > 0)
+                    {
+                        SW.WriteLine();
+                        SW.WriteLine(res);
+                        
+                    }
+                    SW.Close();
                 }
             }
         }
