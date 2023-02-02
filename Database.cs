@@ -14,9 +14,7 @@ namespace cursedapp
         private readonly string dataSource;
         public Database(string dataSource)
         {
-            this.dataSource = dataSource;
-            
-
+            this.dataSource = dataSource; 
         }
         public string Hash(string input)
         {
