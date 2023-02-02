@@ -146,6 +146,7 @@ namespace cursedapp
             List<int> visited = new List<int>();
             List<int> sumof = new List<int>();
             List<int> unVisited = new List<int>();
+            
             for (int i = 0; i < a.GetLength(0); i++)
             {
                 unVisited.Add(i);

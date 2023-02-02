@@ -170,9 +170,13 @@ namespace cursedapp
         {
             if (Vertexes.Count >1 & Edges.Count > 0)
             {
-                var newWay = new List<Edge>();
-                res = G.nearestNeighborAlgorithm(0,Matrix, Vertexes);
-                cloth.Image = G.GetBitmap();
+                if (checkMatrix())
+                {
+                    var newWay = new List<Edge>();
+                    res = G.nearestNeighborAlgorithm(0, Matrix, Vertexes);
+                    cloth.Image = G.GetBitmap();
+                }
+             
             }
             else
                 MessageBox.Show("Заполните граф");
@@ -373,7 +377,24 @@ namespace cursedapp
                 }
             }
         }
-
+        private bool checkMatrix()
+        {
+            for(int i = 0; i<Matrix.GetLength(0); i++)
+            {
+                int countZero = 0;
+                for (int j = 0; j< Matrix.GetLength(0); j++) {
+                    if (Matrix[j,i] == 0) 
+                        countZero++;
+                }
+                if(countZero == Vertexes.Count)
+                {
+                    MessageBox.Show("Заполните граф");
+                    return false;
+                }
+                
+            }
+            return true;
+        }
         private void saveTextSolving_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
