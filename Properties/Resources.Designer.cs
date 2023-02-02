@@ -63,16 +63,6 @@ namespace cursedapp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1200px_Jurin_Kūrin__Rokurin_Ichiro__svg {
-            get {
-                object obj = ResourceManager.GetObject("1200px-Jurin-Kūrin_(Rokurin_Ichiro).svg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap _1483063 {
             get {
                 object obj = ResourceManager.GetObject("1483063", resourceCulture);

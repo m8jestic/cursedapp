@@ -122,9 +122,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ResourceImages\1200px-Jurin-Kūrin_%28Rokurin_Ichiro%29.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="ResourceImages\istockphoto-969119274-612x612.jpg" />
   </ItemGroup>
   <ItemGroup>
