@@ -163,13 +163,14 @@ namespace cursedapp
                         nearestPath = a[actualPoint, vert];
                         nearestPoint = vert;
                     }
-                    
+                    if (a[actualPoint,vert] > 0)
+                    {
                         if (nearestPath > a[actualPoint, vert])
                         {
                             nearestPath = a[actualPoint, vert];
                             nearestPoint = vert;
                         }
-                    
+                    }
                     
                 }
                
