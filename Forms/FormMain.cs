@@ -389,7 +389,6 @@ namespace cursedapp
                     {
                         SW.WriteLine();
                         SW.WriteLine(res);
-                        
                     }
                     SW.Close();
                 }
