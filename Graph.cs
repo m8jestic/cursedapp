@@ -144,9 +144,7 @@ namespace cursedapp
             float pathLength = 0;
             int actualPoint = startPoint;
             List<int> visited = new List<int>();
-            List<int> sumof = new List<int>();
             List<int> unVisited = new List<int>();
-            
             for (int i = 0; i < a.GetLength(0); i++)
             {
                 unVisited.Add(i);
@@ -165,26 +163,35 @@ namespace cursedapp
                         nearestPath = a[actualPoint, vert];
                         nearestPoint = vert;
                     }
-
-                    if (nearestPath > a[actualPoint, vert])
-                    {
-                        nearestPath = a[actualPoint, vert];
-                        nearestPoint = vert;
-                    }
+                    
+                        if (nearestPath > a[actualPoint, vert])
+                        {
+                            nearestPath = a[actualPoint, vert];
+                            nearestPoint = vert;
+                        }
+                    
+                    
                 }
                
                 pathLength += nearestPath;
-                
-                
                 actualPoint = nearestPoint;
-                
                 unVisited.Remove(actualPoint);
                 visited.Add(actualPoint);
             }
-            pathLength += a[actualPoint, startPoint];
-            visited.Add(0);
-            var str =  Print(visited,pathLength,V);
-            return str;
+            if (a[actualPoint, 0] > 0)
+            {
+                pathLength += a[actualPoint, startPoint];
+                visited.Add(0);
+                var str = Print(visited, pathLength, V);
+                return str;
+            }
+            else
+            {
+                MessageBox.Show("Для данного графа нет решения");
+                var str = "Для данного графа решения нет";
+                return str;
+            }
+                         
         }
         private string Print(List<int> visited,float pathLength, List<Vertex> vertexes)
         {

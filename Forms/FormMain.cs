@@ -176,6 +176,11 @@ namespace cursedapp
                     res = G.nearestNeighborAlgorithm(0, Matrix, Vertexes);
                     cloth.Image = G.GetBitmap();
                 }
+                else
+                {
+                    MessageBox.Show("Заполните граф");
+                }
+                
              
             }
             else
@@ -388,9 +393,10 @@ namespace cursedapp
                 }
                 if(countZero == Vertexes.Count)
                 {
-                    MessageBox.Show("Заполните граф");
+                    
                     return false;
                 }
+                
                 
             }
             return true;
