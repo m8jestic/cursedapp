@@ -39,8 +39,6 @@ namespace cursedapp
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.checkBoxPassword = new System.Windows.Forms.CheckBox();
-            this.labelCheckLogin = new System.Windows.Forms.Label();
-            this.labelCheckPassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // okButton
@@ -125,7 +123,7 @@ namespace cursedapp
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(176, 20);
             this.loginTextBox.TabIndex = 10;
-            this.loginTextBox.TextChanged += new System.EventHandler(this.loginTextBox_TextChanged);
+        
             // 
             // passwordTextBox
             // 
@@ -135,7 +133,7 @@ namespace cursedapp
             this.passwordTextBox.Size = new System.Drawing.Size(176, 20);
             this.passwordTextBox.TabIndex = 11;
             this.passwordTextBox.UseSystemPasswordChar = true;
-            this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
+            
             // 
             // checkBoxPassword
             // 
@@ -148,40 +146,12 @@ namespace cursedapp
             this.checkBoxPassword.UseVisualStyleBackColor = true;
             this.checkBoxPassword.CheckedChanged += new System.EventHandler(this.checkBoxPassword_CheckedChanged);
             // 
-            // labelCheckLogin
-            // 
-            this.labelCheckLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.labelCheckLogin.AutoSize = true;
-            this.labelCheckLogin.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
-            this.labelCheckLogin.ForeColor = System.Drawing.Color.Red;
-            this.labelCheckLogin.Location = new System.Drawing.Point(271, 161);
-            this.labelCheckLogin.Name = "labelCheckLogin";
-            this.labelCheckLogin.Size = new System.Drawing.Size(282, 17);
-            this.labelCheckLogin.TabIndex = 13;
-            this.labelCheckLogin.Text = "Логин должен содержать более 4 символов";
-            this.labelCheckLogin.Visible = false;
-            // 
-            // labelCheckPassword
-            // 
-            this.labelCheckPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.labelCheckPassword.AutoSize = true;
-            this.labelCheckPassword.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
-            this.labelCheckPassword.ForeColor = System.Drawing.Color.Red;
-            this.labelCheckPassword.Location = new System.Drawing.Point(267, 231);
-            this.labelCheckPassword.Name = "labelCheckPassword";
-            this.labelCheckPassword.Size = new System.Drawing.Size(290, 17);
-            this.labelCheckPassword.TabIndex = 14;
-            this.labelCheckPassword.Text = "Пароль должен содержать более 5 символов";
-            this.labelCheckPassword.Visible = false;
-            // 
             // FormAuth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(786, 448);
-            this.Controls.Add(this.labelCheckPassword);
-            this.Controls.Add(this.labelCheckLogin);
             this.Controls.Add(this.checkBoxPassword);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.loginTextBox);
@@ -215,8 +185,6 @@ namespace cursedapp
         private System.Windows.Forms.TextBox loginTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
         private CheckBox checkBoxPassword;
-        private Label labelCheckLogin;
-        private Label labelCheckPassword;
     }
 }
 

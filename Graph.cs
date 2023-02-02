@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -10,6 +11,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace cursedapp
 {
+
 
     class Vertex
     {
@@ -23,15 +25,16 @@ namespace cursedapp
     }
     class Edge
     {
-        public int From, To,Weight;
+        public int From, To, Weight;
 
-        public Edge(int From, int To, int Weight =1)
+        public Edge(int From, int To, int Weight = 1)
         {
             this.From = From;
             this.To = To;
             this.Weight = Weight;
         }
     }
+
     class Graph
     {
         Bitmap bitmap;
@@ -42,7 +45,7 @@ namespace cursedapp
         Font fo;
         Brush br;
         PointF point;
-        public int R = 15; 
+        public int R = 15;
 
         public Graph(int width, int height)
         {
@@ -75,7 +78,7 @@ namespace cursedapp
             gr.DrawEllipse(blackPen, (x - R), (y - R), 2 * R, 2 * R);
             point = new PointF(x - 9, y - 9);
             gr.DrawString(number, fo, br, point);
-            
+
         }
 
         public void drawSelectedVertex(int x, int y)
@@ -135,86 +138,66 @@ namespace cursedapp
             }*/
             return matrix;
         }
-        private static int MinKey(int[] key, bool[] set, int verticesCount)
+        
+        public  float nearestNeighborAlgorithm(int startPoint, int[,] a, List<Vertex> V)
         {
-            int min = int.MaxValue, minIndex = 0;
-
-            for (int v = 0; v < verticesCount; ++v)
+            float pathLength = 0;
+            int actualPoint = startPoint;
+            List<int> visited = new List<int>();
+            List<int> sumof = new List<int>();
+            List<int> unVisited = new List<int>();
+            for (int i = 0; i < a.GetLength(0); i++)
             {
-                if (set[v] == false && key[v] < min)
-                {
-                    min = key[v];
-                    minIndex = v;
-                }
+                unVisited.Add(i);
             }
-
-            return minIndex;
-        }
-        public void nearestNeighbourAlgorithm(int[,] graph, List<Vertex> vertexes)
-        {
-            int[] parent = new int[vertexes.Count];
-            int[] key = new int[vertexes.Count];
-            bool[] mstSet = new bool[vertexes.Count];
-
-            for (int i = 0; i < vertexes.Count; ++i)
+            unVisited.Remove(actualPoint);
+            visited.Add(actualPoint);
+            while (unVisited.Count != 0)
             {
-                key[i] = int.MaxValue;
-                mstSet[i] = false;
-            }
-
-            key[0] = 0;
-            parent[0] = -1;
-
-            for (int count = 0; count < vertexes.Count - 1; ++count)
-            {
-                int u = MinKey(key, mstSet, vertexes.Count);
-                mstSet[u] = true;
-
-                for (int v = 0; v < vertexes.Count; ++v)
+                int nearestPath = 0;
+                int nearestPoint = 0;
+                
+                foreach (int vert in unVisited)
                 {
-                    if (Convert.ToBoolean(graph[u, v]) && mstSet[v] == false && graph[u, v] < key[v])
+                    if (nearestPath == 0)
                     {
-                        parent[v] = u;
-                        key[v] = graph[u, v];
+                        nearestPath = a[actualPoint, vert];
+                        nearestPoint = vert;
+                    }
+
+                    if (nearestPath > a[actualPoint, vert])
+                    {
+                        nearestPath = a[actualPoint, vert];
+                        nearestPoint = vert;
                     }
                 }
+               
+                pathLength += nearestPath;
+                
+                
+                actualPoint = nearestPoint;
+                
+                unVisited.Remove(actualPoint);
+                visited.Add(actualPoint);
             }
-            int countZeros = 0;
-            for(int i = 1; i < vertexes.Count; ++i)
-            {
-                if (graph[i, parent[i]] == 0)
-                {
-                    countZeros++;
-                }
-            }
-            if(countZeros == 0)
-            {
-                Print(parent, graph,  vertexes);
-            }
-            else
-            {
-                MessageBox.Show("Заполните граф");
-            }
-             
+            pathLength += a[actualPoint, startPoint];
+            visited.Add(0);
+            Print(visited,pathLength,V);
+            return pathLength;
         }
-        private void Print(int[] parent, int[,] graph, List<Vertex> vertexes)
+        private void Print(List<int> visited,float pathLength, List<Vertex> vertexes)
         {
             string str = " ";
             int sum = 0;
-            str += "Ребро    Вес\n";
-            for (int i = 1; i < vertexes.Count; ++i)
+            str += "Ребра\n";
+            for(int i = 0; i < visited.Count - 1; i++)
             {
-               
-                    str += $"{parent[i] + 1} - {i + 1}       {graph[i, parent[i]]}\n";
-                    sum += graph[i, parent[i]];
-                    gr.DrawLine(blackPen, vertexes[i].x, vertexes[i].y, vertexes[parent[i]].x, vertexes[parent[i]].y);
-                
+                str += $"{visited[i] + 1} - {visited[i + 1] + 1}\n";
+                gr.DrawLine(blackPen, vertexes[visited[i]].x, vertexes[visited[i]].y, vertexes[visited[i+1]].x, vertexes[visited[i+1]].y);
             }
-            str += $"Итоговая сумма: {sum}";
-                
-            MessageBox.Show(str);
-
+            str += $"Итоговый путь {pathLength}";
+            MessageBox.Show($"{str}");
         }
-       
+        
     }
 }

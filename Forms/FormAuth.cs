@@ -36,7 +36,7 @@ namespace cursedapp
             string login = loginTextBox.Text.Trim();
             
             
-            if (loginTextBox.Text.Length !=0 & passwordTextBox.Text.Length != 0 & labelCheckLogin.Visible== false & labelCheckPassword.Visible == false)
+            if (loginTextBox.Text.Length !=0 & passwordTextBox.Text.Length != 0)
             {
                 Database db = new Database("Data Source=userdb.db;");
                 string Hpassword = db.Hash(passwordTextBox.Text);
@@ -69,44 +69,6 @@ namespace cursedapp
 
         }
 
-        private void loginTextBox_TextChanged(object sender, EventArgs e)
-        {
-            string less = "Логин должен содержать более 4 символов";
-            string more = "Логин должен содержать менее 12 символов";
-            if (loginTextBox.Text.Length < 4)
-            {
-                labelCheckLogin.Text = less;
-                labelCheckLogin.Visible = true;
-            }
-            else if(loginTextBox.Text.Length>=12)
-            {
-                labelCheckLogin.Text = more;
-                labelCheckLogin.Visible = true;
-            }
-            else
-            {
-                labelCheckLogin.Visible = false;
-            }
-        }
-
-        private void passwordTextBox_TextChanged(object sender, EventArgs e)
-        {
-            string less = "Пароль должен содержать более 5 символов";
-            string more = "Пароль должен содержать менее 14 символов";
-            if (passwordTextBox.Text.Length < 5)
-            {
-                labelCheckPassword.Text = less;
-                labelCheckPassword.Visible = true;
-            }
-            else if (passwordTextBox.Text.Length >= 14)
-            {
-                labelCheckPassword.Text = more;
-                labelCheckPassword.Visible = true;
-            }
-            else
-            {
-                labelCheckPassword.Visible = false;
-            }
-        }
+        
     }
 }

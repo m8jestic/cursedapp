@@ -96,7 +96,7 @@ namespace cursedapp
                 {
                     for (int i = 0; i < Vertexes.Count; i++)
                     {
-                    dt.Columns.Add($"{i}");
+                    dt.Columns.Add($"{i+1}");
                     dt.Rows.Add();
                     }
                 
@@ -135,7 +135,7 @@ namespace cursedapp
             var row = e.RowIndex;
             var type = dataGridVertexes.Rows[row].Cells[col].Value.ToString();
             bool isNumber = double.TryParse(type, out double number);
-            if (isNumber & number > 0 | type == "")
+            if (isNumber & number > 0 | type != "")
             {
                 if (col != row)
                 {
@@ -170,7 +170,8 @@ namespace cursedapp
                
 
                 var newWay = new List<Edge>();
-                G.nearestNeighbourAlgorithm(Matrix, Vertexes);
+                var res = G.nearestNeighborAlgorithm(0,Matrix, Vertexes);
+               
                 cloth.Image = G.GetBitmap();
             }
             else
