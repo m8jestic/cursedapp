@@ -192,7 +192,7 @@ namespace cursedapp
                 var str = "Для данного графа решения нет";
                 return str;
             }
-                         
+          
         }
         private string Print(List<int> visited,float pathLength, List<Vertex> vertexes)
         {
