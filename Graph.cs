@@ -13,7 +13,7 @@ namespace cursedapp
 {
 
 
-    class Vertex
+   public class Vertex
     {
         public int x, y;
 
@@ -23,7 +23,7 @@ namespace cursedapp
             this.y = y;
         }
     }
-    class Edge
+    public class Edge
     {
         public int From, To, Weight;
 
@@ -35,7 +35,7 @@ namespace cursedapp
         }
     }
 
-    class Graph
+   public class Graph
     {
         Bitmap bitmap;
         Pen blackPen;
@@ -126,16 +126,7 @@ namespace cursedapp
                 matrix[E[i].From, E[i].To] = 1;
                 matrix[E[i].To, E[i].From] = 1;
             }
-            /*for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    if (matrix[i, j] == 1)
-                    {
-                        matrix[i, j] = (int)Math.Sqrt(Math.Pow((V[i].x - V[j].x), 2) + Math.Pow((V[i].y - V[j].y), 2));
-                    }
-                }
-            }*/
+           
             return matrix;
         }
         
